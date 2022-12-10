@@ -20,7 +20,7 @@ const translations = {
     monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     noEventForThisDay: "No event for this day...",
     allDay: "All day",
-    addEvent: "Add event",
+    addEvent: "Create tour",
     delete: "Delete",
     eventTime: "Event time",
     previousYear: "Previous year",

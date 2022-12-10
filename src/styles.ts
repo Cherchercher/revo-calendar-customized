@@ -2,7 +2,7 @@
 //Ignoring jest coverage on this file
 
 import styled, { css, keyframes } from "styled-components";
-import { CloseDetailProps, DayButtonProps, DayProps, DetailsProps, MonthButtonProps, SidebarProps } from "./typings";
+import { CloseDetailProps, DayButtonProps, DayProps, DetailsProps, MonthButtonProps, SidebarProps} from "./typings";
 
 //Animations
 const slide = (w: string, inOut: boolean) => keyframes`
@@ -115,16 +115,40 @@ export const Sidebar = styled.div<SidebarProps>`
       : ""}
 `;
 
+
+const red = 0,
+      green = 120;
+
+
+function hsl_col_perc(percent: number, start: number, end: number, minNumberOfInterests: number) {
+  var a = percent / minNumberOfInterests,
+      b = (end - start) * a,
+  		c = b + start;
+  // background: ${(props) => (props.current ? props.theme.secondaryColor : "none")};
+  // color: ${(props) => (props.current ? props.theme.primaryColor : props.theme.secondaryColor)};
+  // Return a CSS HSL string
+  // turquoise = 180,
+  // blue = 240,
+  // pink = 300;
+  // yellow = 60,
+  return ['hsl('+c+', 100%, 50%)', 'hsl('+(c+180)+', 100%, 50%)'];
+}
+
+
 export const MonthButton = styled.button<MonthButtonProps>`
   border: none;
-  background: ${(props) => (props.current ? props.theme.secondaryColor : "none")};
+
+  a = percent / 100,
+      b = (end - start) * a,
+  		c = b + start;
+  background: ${(props) => (hsl_col_perc(props.intensity, green, red, props.minNumberOfInterests)[0])};
   font-size: 1rem;
   display: inline-block;
   width: 100%;
   height: 100%;
   text-align: left;
   padding: 0.4rem 0.5rem;
-  color: ${(props) => (props.current ? props.theme.primaryColor : props.theme.secondaryColor)};
+  color: ${(props) => (hsl_col_perc(props.intensity, green, red, 12)[1])};
   border-radius: 0;
   &:hover {
     background: ${(props) => props.theme.secondaryColor};
@@ -202,7 +226,7 @@ export const DayButton = styled.button<DayButtonProps>`
             position: relative;
             &::after {
               content: "";
-              background: ${(props) => props.theme.indicatorColor};
+              background:${(hsl_col_perc(props.intensity, green, red, props.minNumberOfInterests)[0])};
               width: 100%;
               height: 2px;
               position: absolute;

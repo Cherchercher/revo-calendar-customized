@@ -600,7 +600,7 @@ exports[`Calendar component renders correctly using the passed props 1`] = `
       <button
         onClick={[Function]}
       >
-        Add event
+        Create A Tour
       </button>
     </div>
     <div>

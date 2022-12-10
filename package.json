@@ -12,6 +12,7 @@
   "module": "dist/index.js",
   "source": "src/index.tsx",
   "scripts": {
+    "start": "react-scripts start",
     "test": "jest",
     "test-coverage": "jest --coverage",
     "build": "rollup -c"
@@ -27,7 +28,9 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.14.0",
-    "styled-components": "^5.3.0"
+    "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.0",
+    "react-datepicker": "^4.3.0"
   },
   "peerDependencies": {
     "react": "^17.0.1",
@@ -44,6 +47,8 @@
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.8",
+    "@types/react-datepicker": "^4.3.2",
+    "@types/react-dom": "^18.0.9",
     "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.9",
     "babel-plugin-styled-components": "^2.0.1",
@@ -58,5 +63,17 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

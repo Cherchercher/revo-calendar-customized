@@ -61,6 +61,12 @@ export interface SidebarProps {
 
 export interface MonthButtonProps {
   current: boolean;
+  intensity: number;
+  minNumberOfInterests: number;
+}
+
+export interface GradientProps {
+  minNumberOfInterests: number;
 }
 
 export interface DayProps {
@@ -72,6 +78,8 @@ export interface DayButtonProps {
   current: boolean;
   today: boolean;
   hasEvent: boolean;
+  intensity: number;
+  minNumberOfInterests: number;
 }
 
 export interface DetailsProps {
