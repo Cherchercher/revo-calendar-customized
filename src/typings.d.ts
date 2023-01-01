@@ -15,6 +15,8 @@ interface Events {
   extra?: {
     icon?: string;
     text: string;
+    startDatetime?: Date;
+    endDatetime?: Date;
   };
 }
 
@@ -49,6 +51,7 @@ export interface Props {
   eventSelected?(index: number): void;
   addEvent?(date: Date): void;
   deleteEvent?(index: number): void;
+  showEventDetails?(index: number): void;
 }
 
 //Styled Component Props

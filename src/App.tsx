@@ -51,7 +51,9 @@ function App() {
       allDay: false,
       extra: {
         icon: personIcon,
-        text: "party of 5",
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
       },
     },
     {
@@ -59,8 +61,10 @@ function App() {
       date: +reso2,
       allDay: false,
       extra: {
-        icon: personIcon,
-        text: "party of 2",
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
       },
     },
     {
@@ -68,8 +72,10 @@ function App() {
       date: +reso3,
       allDay: false,
       extra: {
-        icon: personIcon,
-        text: "party of 9",
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
       },
     },
     {
@@ -77,24 +83,44 @@ function App() {
       date: +reso4,
       allDay: false,
       extra: {
-        icon: personIcon,
-        text: "party of 7",
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
       },
     },
     {
       name: "Lunch with Michael",
       date: +lunchWithKevin,
       allDay: false,
+      extra: {
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
+      },
     },
     {
       name: "Meeting with Vito",
       date: +meetingWithVito,
       allDay: false,
+      extra: {
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
+      },
     },
     {
       name: "Dinner with Fredo",
       date: +dinnerWithFredo,
       allDay: false,
+      extra: {
+        icon: thermometerIcon,
+        text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
+      },
     },
     {
       name: "Day after Tomorrow",
@@ -103,6 +129,8 @@ function App() {
       extra: {
         icon: thermometerIcon,
         text: "-30º C",
+        startDatetime: new Date(),
+        endDatetime: new Date(),
       },
     },
   ]);
@@ -145,6 +173,8 @@ function App() {
       extra: {
         icon: newEventIcon,
         text: newEventText,
+        startDatetime: newEventDate,
+        endDatetime: newEventDate
       },
     };
     var temp = eventList;
@@ -253,7 +283,7 @@ function App() {
                   <DatePicker
                     id="datePicker"
                     selected={newEventDate}
-                    onChange={(date) => {
+                    onChange={(date: any) => {
                       date instanceof Date && setNewEventDate(date);
                     }}
                     showTimeSelect

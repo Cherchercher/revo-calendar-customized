@@ -55,6 +55,7 @@ const RevoCalendar = ({
   eventSelected = () => {},
   addEvent = () => {},
   deleteEvent = () => {},
+  showEventDetails = () => {},
 }: Props) => {
   // TRANSFORM ANY PASSED COLOR FORMAT INTO RGB.
   const primaryColorRGB = helperFunctions.getRGBColor(primaryColor);
@@ -104,6 +105,7 @@ const RevoCalendar = ({
   }
 
   // SET INITIAL STATE.
+
   const [currentDay, setDay] = useState(date.getDate());
   const [currentMonth, setMonth] = useState(date.getMonth());
   const [currentYear, setYear] = useState(date.getFullYear());
@@ -335,7 +337,8 @@ const RevoCalendar = ({
     var selectedDate = new Date(currentYear, currentMonth, currentDay);
 
     // WILL SHOW DELETE EVENT BUTTON ON CURRENT showDelete INDEX. -1 WON'T SHOW ANYTHING
-    const [showDelete, setDeleteState] = useState(-1);
+    const [showDetails, setShowDetailsState] = useState(-1);
+    // const [showEventDetailsButton, setShowEventDetailsButton] = useState(-1);
 
     // MAKE SURE NO ANIMATION WILL RUN ON NEXT RE-RENDER.
     function animationEnd() {
@@ -352,7 +355,7 @@ const RevoCalendar = ({
       }
     }
 
-    function toggleDeleteButton(i: number) {
+    function toggleShowEventDetailsButton(i: number) {
       // GIVE PARENT COMPONENT THE CURRENT SELECTED EVENT.
       eventSelected(i);
 
@@ -372,7 +375,7 @@ const RevoCalendar = ({
 
       if (helperFunctions.isValidDate(eventDate) && tempDate.getTime() === selectedDate.getTime()) {
         const event = (
-          <Event key={index} onClick={() => toggleDeleteButton(index)} role="button">
+          <Event key={index} onClick={() => toggleShowEventDetailsButton(index)} role="button">
             <p>{events[index].name}</p>
             <div>
               {events[index].allDay ? (
@@ -391,7 +394,7 @@ const RevoCalendar = ({
                   <svg width="20" height="20" viewBox="0 0 24 24">
                     <path fill={primaryColorRGB} d={CLOCK_ICON_SVG} />
                   </svg>
-                  <span>{helperFunctions.getFormattedTime(eventDate, timeFormat24)}</span>
+                  <span>{helperFunctions.getFormattedTime(eventDate, timeFormat24)}</span> 
                 </div>
               )}
               {events[index].extra && (
@@ -400,10 +403,12 @@ const RevoCalendar = ({
                     <path fill={primaryColorRGB} d={events[index].extra?.icon} />
                   </svg>
                   <span>{events[index].extra?.text}</span>
+                  <span>{events[index].extra?.startDatetime?.toDateString()} - {events[index].extra?.endDatetime?.toDateString()}</span>
                 </div>
               )}
             </div>
-            {showDelete === index && <button onClick={() => deleteEvent(index)}>{languages[lang].delete}</button>}
+            {/* {showDelete === index && <button onClick={() => deleteEvent(index)}>{languages[lang].delete}</button>} */}
+            {showDetails === index && <button onClick={() => showEventDetails(index)}>{languages[lang].showEventDetails}</button>}
           </Event>
         );
         eventDivs.push(event);
